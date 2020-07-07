@@ -3,6 +3,7 @@ import { getProduct } from '../Redux/Action';
 import { useDispatch, useSelector } from 'react-redux';
 import { ProductCard } from '../Components';
 import { API_URL } from '../Support/API_URL';
+import background from '../Components/assets/minimal.jpg';
 
 const ProductPage = () => {
     const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const ProductPage = () => {
     };
 
     return (
-        // <div style={{backgroundImage: `url(${background})`}}>
+        <div style={{backgroundImage: `url(${background})`, backgroundSize: 'cover'}}>
             <div className='d-flex justify-content-center'>
                 <div className='col-10'>
                     <div className='row justify-content-center'>
@@ -38,7 +39,7 @@ const ProductPage = () => {
                     </div>
                 </div>
             </div>
-        // </div>
+        </div>
     );
 };
 

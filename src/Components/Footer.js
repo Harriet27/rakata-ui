@@ -45,10 +45,11 @@ const styles = {
     display: 'block',
     justifyContent: 'space-around',
     backgroundColor: '#1E2535',
+    // backgroundColor: 'rgba(25, 23, 196, 0.63)',
     color: 'white',
-    height: '190px',
+    height: '200px',
     width: '100%',
-    marginTop: '10px',
+    marginBottom: '0px',
   },
   home: {
     color: 'white',

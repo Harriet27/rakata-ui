@@ -29,23 +29,23 @@ const Header = (props) => {
 
   return (
     <div>
-      <Navbar expand="md" light style={{backgroundColor : 'none'}}>
-        <NavbarBrand tag={Link} to={'/'}>
+      <Navbar expand="md" light style={{backgroundColor : '#1E2535'}}>
+        <NavbarBrand tag={Link} to={'/'} style={{color: 'white'}}>
           Prima Qualiti Rakata
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            <UncontrolledDropdown nav inNavbar style={{ float: 'right' }}>
-              <DropdownToggle nav caret>
+            <UncontrolledDropdown nav inNavbar style={{float: 'right'}}>
+              <DropdownToggle nav caret style={{color: 'white'}}>
                 {
                   role === 'admin'
                   ?
                   <div style={{display: 'inline', fontWeight: '500'}}>
-                    <FontAwesomeIcon icon={faLock} /> {role}
+                    <FontAwesomeIcon icon={faLock} style={{color: 'white'}} /> {role}
                   </div>
                   :
-                  <FontAwesomeIcon icon={faUser} />
+                  <FontAwesomeIcon icon={faUser} style={{color: 'white'}} />
                 }
               </DropdownToggle>
               <DropdownMenu right>

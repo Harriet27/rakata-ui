@@ -3,6 +3,7 @@ import { FormGroup, Input, Button, Form, Label } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoginAdmin } from '../Redux/Action';
 import { Redirect } from 'react-router-dom';
+import profile from '../Components/assets/pp2.png';
 
 const LoginPage = () => {
     const dispatch = useDispatch();
@@ -26,22 +27,24 @@ const LoginPage = () => {
         return <Redirect to="/" />;
     }
     return (
-        <React.Fragment>
-            <h1 style={{'textAlign' : 'center'}}>Login</h1>
-            <div className='d-flex justify-content-center' style={{height : '70vh', alignItems : 'center'}}>
-                <Form style={{width : '400px', height: '400px'}}>
+        <div>
+            <div style={{textAlign: 'center'}}>
+                <img src={`${profile}`} alt='profile img' height='120px' width='120px' style={{marginTop: '80px'}} />
+            </div>
+            <div className='d-flex justify-content-center' style={{alignItems : 'center'}}>
+                <Form style={{width : '400px', height: '205px'}}>
                     <FormGroup>
-                        <Label for="examplePassword">Password</Label>
+                        <Label for="examplePassword">Enter Password</Label>
                         <Input type="password" name="password" id="examplePassword" placeholder="Password" onChange={handleChange} />
                     </FormGroup>
                     <div style={{display: 'flex', justifyContent: 'space-around'}}>
-                        <Button color="primary" type='submit' onClick={handleLogin}>
+                        <Button outline color='primary' type='submit' onClick={handleLogin} style={{borderRadius: '50px', padding: '12px'}}>
                             Login
                         </Button>
                     </div>
                 </Form>
             </div>
-        </React.Fragment>
+        </div>
     );
 };
 

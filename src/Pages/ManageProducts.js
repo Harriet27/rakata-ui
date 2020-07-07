@@ -208,12 +208,7 @@ const ManageProducts = () => {
 
     return (
         <div className='d-flex'>
-            <div className='col-3'>
-                {/* <div className='d-flex justify-content-center'>
-                    <Button variant="outline-danger" style={styles.buttonStyle}>
-                        Log Out
-                    </Button>
-                </div> */}
+            <div className='col-3' style={{marginTop: '10px'}}>
                 <Input
                     style={styles.sideInputBox}
                     placeholder='Name'
@@ -301,6 +296,7 @@ const styles = {
         height: '100%',
     },
     table: {
+        marginTop: '20px',
         marginBottom: '20px',
     },
     sideInputBox: {
