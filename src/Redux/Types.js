@@ -1,0 +1,12 @@
+export const API_AUTH_START = 'API_AUTH_START' ;
+export const API_AUTH_SUCCESS = 'API_AUTH_SUCCESS'; 
+export const API_AUTH_FAILED = 'API_AUTH_FAILED' ;
+export const LOGIN = 'LOGIN' ;
+export const LOGOUT = 'LOGOUT';
+
+export const FETCH_DATA_START = 'FETCH_DATA_START';
+export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
+export const FETCH_DATA_LIMIT = 'FETCH_DATA_LIMIT';
+export const FETCH_DATA_FAILED = 'FETCH_DATA_FAILED';
+export const DATA_FETCHED = 'DATA_FETCHED';
+export const SEARCH_DATA = 'SEARCH_DATA';
