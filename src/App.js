@@ -25,7 +25,7 @@ function App() {
   return (
     <div>
       <Header />
-          {
+          {/* {
             role === "admin"
             ?
             <Switch>
@@ -37,7 +37,18 @@ function App() {
               <Route path="/" component={ProductPage} exact />
               <Route path="/auth" component={LoginPage} />
             </Switch>
-          }
+          } */}
+          <Switch>
+            <Route path="/" component={ProductPage} exact />
+            <Route path="/auth" component={LoginPage} />
+            {
+              role === "admin"
+              ?
+              <Route path="/dashboard" component={ManageProducts} />
+              :
+              null
+            }
+          </Switch>
       <Footer />
     </div>
   );

@@ -18,14 +18,16 @@ const LoginPage = () => {
             [e.target.name]: e.target.value,
         });
     };
+    console.log(formInput);
 
     const handleLogin = () => {
         dispatch(LoginAdmin(formInput));
     };
 
     if (logged) {
-        return <Redirect to="/" />;
+        return <Redirect to="/dashboard" />;
     }
+    console.log(logged);
     return (
         <div>
             <div style={{textAlign: 'center'}}>
@@ -35,7 +37,7 @@ const LoginPage = () => {
                 <Form style={{width : '400px', height: '205px'}}>
                     <FormGroup>
                         <Label for="examplePassword">Enter Password</Label>
-                        <Input type="password" name="password" id="examplePassword" placeholder="Password" onChange={handleChange} />
+                        <Input type="password" name="password" placeholder="Password" onChange={handleChange} autoComplete="on" />
                     </FormGroup>
                     <div style={{display: 'flex', justifyContent: 'space-around'}}>
                         <Button outline color='primary' type='submit' onClick={handleLogin} style={{borderRadius: '50px', padding: '12px'}}>

@@ -8,7 +8,7 @@ import {
     LOGOUT,
 } from '../Types';
 
-export const LoginAdmin = (form) => {
+export const LoginAdmin = form => {
     return async (dispatch) => {
         dispatch({
             type: API_AUTH_START,
@@ -21,9 +21,6 @@ export const LoginAdmin = (form) => {
                 payload: { id, user, roleId },
             });
             localStorage.setItem('token', token);
-            dispatch({
-                type: API_AUTH_SUCCESS,
-            });
         } catch (err) {
             dispatch({
                 type: API_AUTH_FAILED,
