@@ -59,10 +59,10 @@ const Header = (props) => {
                   </div>
                   :
                   <div>
-                    <Link to='/'>
+                    <Link to='/dashboard'>
                       <DropdownItem>Dashboard</DropdownItem>
                     </Link>
-                    <Link to='/product'>
+                    <Link to='/'>
                       <DropdownItem>View Products</DropdownItem>
                     </Link>
                     <Link to='/' onClick={() => dispatch(Logout())}>
