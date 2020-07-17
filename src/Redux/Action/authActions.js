@@ -4,24 +4,30 @@ import {
     API_AUTH_START,
     API_AUTH_SUCCESS,
     API_AUTH_FAILED,
-    LOGIN,
+    // LOGIN,
     LOGOUT,
 } from '../Types';
 
-export const LoginAdmin = form => {
+export const LoginAdmin = (form) => {
+    // console.log("before");
     return async (dispatch) => {
+        // console.log("after");
         dispatch({
             type: API_AUTH_START,
         });
         try {
+            // console.log("ini try");
             let res = await Axios.post(`${API_URL}/users/login`, form);
+            // console.log("AXIOS RESPONSE");
             let { id, user, roleId, token } = res.data.data;
             dispatch({
-                type: LOGIN,
+                type: API_AUTH_SUCCESS,
                 payload: { id, user, roleId },
             });
             localStorage.setItem('token', token);
+            // console.log("LOGIN DONE");
         } catch (err) {
+            // console.log("ini catch");
             dispatch({
                 type: API_AUTH_FAILED,
                 payload: err,
@@ -47,11 +53,8 @@ export const KeepLogin = (token) => {
                 // console.log(res.data.data);
                 let { id, user, roleId } = res.data.data;
                 dispatch({
-                    type : LOGIN,
+                    type : API_AUTH_SUCCESS,
                     payload : { id, user, roleId },
-                });
-                dispatch({
-                    type : API_AUTH_SUCCESS
                 });
             }
         } catch (err) {

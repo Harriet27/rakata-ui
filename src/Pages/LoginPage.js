@@ -18,16 +18,17 @@ const LoginPage = () => {
             [e.target.name]: e.target.value,
         });
     };
-    console.log(formInput);
+    // console.log(formInput);
 
-    const handleLogin = () => {
+    const handleLogin = (e) => {
         dispatch(LoginAdmin(formInput));
+        e.preventDefault();
     };
 
     if (logged) {
         return <Redirect to="/dashboard" />;
     }
-    console.log(logged);
+    // console.log(logged);
     return (
         <div>
             <div style={{textAlign: 'center'}}>
