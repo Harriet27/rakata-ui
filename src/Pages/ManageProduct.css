@@ -1,0 +1,62 @@
+/* BROWSER */
+.addForm {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.tabel {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 0 0 75%;
+    max-width: 75%;
+}
+
+.image {
+    height: 100px;
+}
+
+.yeet {
+    display: flex;
+}
+
+/* MOBILE */
+@media only screen and (max-width: 1000px) {
+    .yeet {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .addForm {
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tabel {
+        position: relative;
+        width: 30%;
+        height: 70%;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .image {
+        height: 90px;
+        width: 90px;
+    }
+}

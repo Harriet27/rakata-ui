@@ -49,7 +49,6 @@
     .produk {
         display: flex;
         flex-direction: column;
-        /* margin-left: 35px; */
         margin: auto;
         justify-content: center;
     }

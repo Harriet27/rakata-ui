@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Input, CustomInput, InputGroupAddon, InputGroup } from 'reactstrap';
 import Swal from 'sweetalert2';
-import { Button /*, Col, Form*/ } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { API_URL } from '../Support/API_URL';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProduct,/* getProductLimit,*/ getProduct, deleteProduct, editProduct } from '../Redux/Action';
-// import { ProductPagination } from '../Components';
+import { addProduct, getProduct, deleteProduct } from '../Redux/Action';
+import './ManageProduct.css';
 
 const ManageProducts = () => {
     const productList = useSelector((state) => state.product.productList);
@@ -14,7 +14,6 @@ const ManageProducts = () => {
     const dispatch = useDispatch();
 
     const [update, setUpdate] = useState(false);
-    const [toggle, setToggle] = useState(null);
     const [formInput, setformInput] = useState({
         name: '',
         price: '',
@@ -25,21 +24,10 @@ const ManageProducts = () => {
         imageName : 'Select File...',
         imageFile : undefined,
     });
-    const [editName, setEditName] = useState('');
-    const [editPrice, setEditPrice] = useState('');
-    // const [currentPage, setCurrentPage] = useState(1);
-
-    // const productPerPage = 5;
-    // const offset = productPerPage * (currentPage - 1);
-    // const paginate = pageNumber => setCurrentPage(pageNumber);
-
-    // const totalProducts = useSelector((state) => state.product.count);
 
     useEffect(() => {
-        // dispatch(getProductLimit(productPerPage, offset));
         dispatch(getProduct());
         if (update) setUpdate(false);
-    // },[dispatch, update, currentPage, offset]);
     },[dispatch, update]);
 
     const handleChangeAdd = (e) => {
@@ -125,77 +113,18 @@ const ManageProducts = () => {
         })
     };
 
-    const handleEditConfirm = (id) => {
-        let formData = new FormData();
-        formData.append('nama', editName);
-        formData.append('harga', editPrice);
-        formData.append('image', image.imageFile);
-        dispatch(
-            editProduct(id, formData)
-        );
-        setUpdate(true);
-        setToggle(null);
-    };
-
     const renderTable = () => {
         return productList.map((val, index) => {
-            if (toggle === val.product_id) {
-                return (
-                    <tr key={index}>
-                        <td style={styles.rowTxtCenter}>{val.id}</td>
-                        <td style={styles.rowTxtCenter}>
-                            <Input
-                                name='name'
-                                defaultValue={val.nama}
-                                onChange={(e) => setEditName(e.target.value)}
-                            />
-                        </td>
-                        <td style={styles.rowTxtCenter}>
-                            <CustomInput
-                                type='file'
-                                name='imageEdit'
-                                id='imageEdit'
-                                label={image.imageName}
-                                onChange={handleImage}
-                            />
-                        </td>
-                        <td style={styles.rowTxtCenter}>
-                            <Input
-                                name='price'
-                                defaultValue={val.harga}
-                                onChange={(e) => setEditPrice(e.target.value)}
-                            />
-                        </td>
-                        <td style={styles.rowBtnCenter}>
-                            <Button variant='outline-dark' style={styles.buttonStyle} onClick={() => setToggle(null)}>
-                                Cancel
-                            </Button>
-                        </td>
-                        <td style={styles.rowBtnCenter}>
-                            <Button variant='outline-dark' style={styles.buttonStyle} 
-                            onClick={() => handleEditConfirm(val.product_id, editName, editPrice)}>
-                                Confirm
-                            </Button>
-                        </td>
-                    </tr>
-                );
-            }
             return (
                 <tr key={index}>
-                    <td style={styles.rowTxtCenter}>{index+1}</td>
                     <td style={styles.rowTxtCenter}>{val.nama}</td>
                     <td style={styles.rowTxtCenter}>{val.merk}</td>
                     <td style={styles.rowTxtCenter}>
-                        <img src={API_URL + val.imagePath} alt='Gambar' height='100px'/>
+                        <img src={API_URL + val.imagePath} alt='Gambar' className='image' />
                     </td>
                     <td style={styles.rowTxtCenter}>
                         {`Rp. ${val.harga.toLocaleString('id-ID')}`}
                     </td>
-                    {/* <td style={styles.rowTxtCenter}>
-                        <Button variant='outline-primary' style={styles.buttonStyle} onClick={() => setToggle(val.product_id)}>
-                            Edit
-                        </Button>
-                    </td> */}
                     <td style={styles.rowBtnCenter}>
                         <Button variant='outline-danger' style={styles.buttonStyle} onClick={() => handleDelete(val.product_id)}>
                             Delete
@@ -207,8 +136,8 @@ const ManageProducts = () => {
     };
 
     return (
-        <div className='d-flex'>
-            <div className='col-3' style={{marginTop: '10px'}}>
+        <div className='yeet'>
+            <div className='addForm' style={{marginTop: '10px'}}>
                 <Input
                     style={styles.sideInputBox}
                     placeholder='Name'
@@ -260,21 +189,15 @@ const ManageProducts = () => {
                     </Button>
                 </div>
             </div>
-            <div style={styles.container} className='col-9'>
-                {/* <Col sm={3} style={{display: 'inline-block'}}>
-                    <Form.Control style={{display: 'inline-block'}} type="text" name="productName" placeholder="Product Name" />
-                </Col>
-                <Button variant='outline-primary' style={styles.buttonStyle}>Search</Button> */}
-                <Table hover bordered style={styles.table}>
+            <div className='tabel' style={styles.container}>
+                <Table hover bordered style={styles.table} size='sm'>
                     <thead>
                         <tr>
-                            <th style={styles.rowTxtCenter}>#</th>
                             <th style={styles.rowTxtCenter}>Name</th>
                             <th style={styles.rowTxtCenter}>Brand</th>
                             <th style={styles.rowTxtCenter}>Image</th>
                             <th style={styles.rowTxtCenter}>Price</th>
                             <th style={styles.rowTxtCenter}>Action</th>
-                            {/* <th colSpan='2' style={styles.rowTxtCenter}>Action</th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -282,11 +205,6 @@ const ManageProducts = () => {
                     </tbody>
                 </Table>
             </div>
-            {/* <ProductPagination
-                productPerPage={productPerPage}
-                totalProducts={totalProducts}
-                paginate={paginate}
-            /> */}
         </div>
     );
 };
