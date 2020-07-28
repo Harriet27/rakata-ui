@@ -9,25 +9,45 @@ import {
     FETCH_DATA_LIMIT,
 } from '../Types';
 
+// export const getProduct = () => {
+//     return async (dispatch) => {
+//         dispatch({
+//             type: FETCH_DATA_START,
+//         });
+//         try {
+//             let res = await Axios.get(`${API_URL}/products/get-products`);
+//             console.log('my data is at', res);
+//             dispatch({
+//                 type: DATA_FETCHED,
+//                 payload: res.data.data,
+//             });
+//             dispatch({
+//                 type: FETCH_DATA_SUCCESS,
+//             });
+//         } catch (err) {
+//             dispatch({
+//                 type: FETCH_DATA_FAILED,
+//             });
+//         }
+//     }
+// };
+
 export const getProduct = () => {
     return async (dispatch) => {
         dispatch({
             type: FETCH_DATA_START,
         });
-        try {
-            let res = await Axios.get(`${API_URL}/products/get-products`);
+        Axios.get(`${API_URL}/products/get-products`)
+        .then((response) => {
             dispatch({
                 type: DATA_FETCHED,
-                payload: res.data.data,
+                payload: response.data.data,
             });
-            dispatch({
-                type: FETCH_DATA_SUCCESS,
-            });
-        } catch (err) {
-            dispatch({
-                type: FETCH_DATA_FAILED,
-            });
-        }
+            console.log('this is my response', response);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
     }
 };
 

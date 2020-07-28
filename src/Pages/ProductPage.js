@@ -3,7 +3,8 @@ import { getProduct } from '../Redux/Action';
 import { useDispatch, useSelector } from 'react-redux';
 import { ProductCard } from '../Components';
 import { API_URL } from '../Support/API_URL';
-import background from '../Components/assets/minimal.jpg';
+// import background from '../Components/assets/minimal.jpg';
+import './ProductPage.css';
 
 const ProductPage = () => {
     const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const ProductPage = () => {
     const renderProducts = () => {
         return products.map((val, idx) => {
             return (
-                <div className="col-3" key={idx}>
+                <div className="col-3 cardMap" key={idx}>
                     <ProductCard
                         image={API_URL + val.imagePath}
                         name={val.nama}
@@ -31,10 +32,10 @@ const ProductPage = () => {
     };
 
     return (
-        <div style={{backgroundImage: `url(${background})`, backgroundSize: 'cover'}}>
-            <div className='d-flex justify-content-center'>
-                <div className='col-10'>
-                    <div className='row justify-content-center'>
+        <div className="mainDiv">
+            <div className='firstchild'>
+                <div className='col-12 kolom'>
+                    <div className='produk'>
                         {renderProducts()}
                     </div>
                 </div>

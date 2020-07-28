@@ -1,0 +1,56 @@
+/* BROWSER */
+.mainDiv {
+    background-image: url('../Components/assets/minimal.jpg');
+    background-size: cover;
+}
+
+.firstchild {
+    display: flex;
+    justify-content: center;
+}
+
+.produk {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    justify-content: center;
+}
+
+/* MOBILE */
+@media only screen and (max-width: 1000px) {
+    .cardMap {
+        position: relative;
+        display: flex;
+        width: 100%;
+    }
+
+    .mainDiv {
+        background-image: url('../Components/assets/minimal.jpg');
+        background-size: cover;
+    }
+
+    .firstchild {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .kolom {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .produk {
+        display: flex;
+        flex-direction: column;
+        /* margin-left: 35px; */
+        margin: auto;
+        justify-content: center;
+    }
+}

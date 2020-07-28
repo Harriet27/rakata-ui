@@ -7,11 +7,12 @@ import {
   CardTitle, 
   CardSubtitle,
 } from 'reactstrap';
+import './ProductCard.css';
 
 const ProductCard = (props) => {
   return (
     <div key={props.key}>
-      <Card className='box-glow' style={{textAlign: 'center', height: '400px', marginBottom: '20px', marginTop: '20px'}}>
+      <Card className='box-glow kartu' style={{textAlign:'center', height:'450px', marginBottom:'20px', marginTop:'20px'}}>
         <CardImg top width="100%" height="70%" src={props.image} alt="Image here" />
         <CardBody>
           <CardTitle style={{fontWeight: '900', fontSize: '14px'}}>
